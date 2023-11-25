@@ -1,0 +1,1 @@
+export const USER_DETAILS = `https://jsonplaceholder.typicode.com/users`
