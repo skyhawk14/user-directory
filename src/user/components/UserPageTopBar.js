@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 const UserPageTopBar = () => {
   const [country, setCountry] = useState('')
   const [dateTime, setDateTime] = useState('')
+  const [timeZone, setTimeZone] = useState('')
   const { responseData } = useFetch(API.COUNTRIES)
   const navigate = useNavigate()
 
@@ -24,7 +25,8 @@ const UserPageTopBar = () => {
             return
           }
           const data = await response.json()
-          setDateTime(new Date(`${data.utc_datetime.split('.')[0]}Z`))
+          setTimeZone(data.timezone)
+          setDateTime(new Date(Date.parse(data.datetime)))
         } catch(err){
           console.log('Error while fetching time')
         }
@@ -52,6 +54,7 @@ const UserPageTopBar = () => {
         <div style={{width: '400px'}}>
           {dateTime && <DisplayTime
             dateTime = {dateTime}
+            timeZone = {timeZone}
           />}
         </div>
       </div>

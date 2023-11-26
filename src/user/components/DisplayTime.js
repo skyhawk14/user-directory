@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useTimer } from '@/src/shared/hooks/useTimer'
 import Button from '../../shared/Button/Button'
 
-const DisplayTime = ({ dateTime }) => {
-  const {time, startPause} = useTimer(dateTime)
+const DisplayTime = ({ dateTime, timeZone }) => {
+  const {time, startPause} = useTimer(dateTime, timeZone)
   return (
     <div 
       style={{

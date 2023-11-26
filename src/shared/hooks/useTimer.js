@@ -1,17 +1,19 @@
 import React, { useEffect, useState, useRef } from 'react'
 
-function getTimeValue(day){
-  // const locale = 'en';
-  // return day.toLocaleTimeString(locale, { hour: 'numeric', hour12: true, minute: 'numeric', second: 'numeric' })
-  debugger
-  return day.toLocaleTimeString()
-  // return day.toLocaleString().split(',')[1].trim()
+function getTimeValue(day, timeZone){
+  const formattedDate = day.toLocaleString('default', {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    timeZone
+  })
+  return formattedDate
 }
 
-export const useTimer = (date) => {
+export const useTimer = (date, timeZone) => {
   const [isRunning, setIsRunning] = useState(true)
   const [today, setDate] = useState(date);
-  const [time, setTime] = useState(getTimeValue(today))
+  const [time, setTime] = useState(getTimeValue(today, timeZone))
 
   const dateTime = useRef(date)
   
@@ -22,7 +24,7 @@ export const useTimer = (date) => {
         oldDateTime.setSeconds(oldDateTime.getSeconds()+1)
         dateTime.current = oldDateTime
         setDate(oldDateTime) 
-        setTime(getTimeValue(today))
+        setTime(getTimeValue(today, timeZone))
       }
     }, 1000);
     return () => {

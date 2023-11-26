@@ -17,7 +17,9 @@ const TypeAheadDropDown = ({items, changeHandler, label}) => {
       suggestions,
       text: value
     }))
-    changeHandler(value)
+    if(value === ''){
+      changeHandler(value)
+    }
   }
   
   const suggestionSelected=(value)=>{
