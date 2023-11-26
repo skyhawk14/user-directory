@@ -1,0 +1,19 @@
+.post-content{
+  padding: 10px 20px;
+  background: lightblue;
+  height: 90%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+}
+
+.title{
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 600px) {
+  .post-content{
+    margin-bottom: 10px;
+    padding-bottom: 0;
+  }
+}

@@ -9,20 +9,20 @@ const useFetch = function(url) {
     setLoading(true)
     setResponseData(null);
     setError(null);
-    fetch(url)
-    .then(res => {
-      console.log(res);
-      res.json().then(data=>{
-        console.log(data);
+    async function fetchData(){
+      try {
+        const response = await fetch(url)
+        const data = await response.json()
         setResponseData(data)
         setLoading(false);
-      })
-    })
-    .catch(err => {
-      setLoading(false)
-      setError('An error occurred. Awkward..')
-    })
+      } catch (error) {
+        setLoading(false)
+        setError('An error occurred. Awkward..')
+        console.log('Error fetching url', url);
+      }
+    }
+    fetchData()
   }, [url])
   return { responseData, loading, error }
 }
-export default useFetch
+export { useFetch }

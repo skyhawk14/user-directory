@@ -1,11 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
-import User from "../pages";
+import UserDetails from "../pages/UserDetails";
+import UserPost from "../pages/UserPost";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <User/>
+    element: (
+      <UserDetails/>
+    )
   },
+  {
+    path: "/user/:id",
+    element: (
+      <UserPost/>
+    )
+  },
+  {
+    path: "*",
+    element: <>Not found</>
+  }
 ])
 
 export default router

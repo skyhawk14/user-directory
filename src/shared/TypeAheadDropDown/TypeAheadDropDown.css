@@ -1,0 +1,54 @@
+.TypeAheadDropDown{
+  border: 1px solid gray;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.73);
+}
+
+.suggestion-container{
+  max-height: 30vh;
+  overflow-y: auto;
+  z-index: 200;
+  border-radius: 5px;
+  background: lightgray;
+  position: absolute;
+  min-width: 100px;
+}
+
+.TypeAheadDropDown input{
+  width: 100%;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.73);
+  padding: 10px 5px ;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid black;
+  min-width: 200px;
+}
+
+.TypeAheadDropDown ul::before{
+  content: '';
+}
+
+.TypeAheadDropDown ul{
+  list-style-type: none;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid gray;
+}
+
+.TypeAheadDropDown li{
+  padding: 10px 5px ;
+  cursor: pointer;
+}
+
+.TypeAheadDropDown li:hover{
+  background: lightgray;
+  text-decoration: underline;
+}
+
+

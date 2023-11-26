@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import useFetch from '../../shared/hooks/useFetch'
-import { USER_DETAILS } from '../constants'
+import React, { useEffect } from 'react'
+import { fetchUsersAndPosts } from '@/src/user/store/usersSlice'
+import router from '@/src/user/router'
+import { RouterProvider } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 const User = () => {
-  const { loading, responseData, error } = useFetch(USER_DETAILS)
-  return (
-    <div>
-      {loading ||loading == null ? <>Loading</> : (
-        <>
-          {
-            responseData.map((user)=>(
-                <div key={user.id}>{ user.name }</div>
-              )
-            )
-          }
-        </>
-      )}
-      {
-        Boolean(error) && <>Error while fetching data</>
-      }
-    </div>
-  )
+  // Load users and post data
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(fetchUsersAndPosts())
+  },[])
+  return <RouterProvider router={router}/>
 }
-  
 export default User
