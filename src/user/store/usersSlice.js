@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit"
+import { groupBy } from "../../shared/utilities/pollyfill";
 import { API } from "../constants";
 import { fetchPosts } from "./postsSlice";
 
@@ -36,7 +37,8 @@ export const usersSlice = createSlice({
     })
     .addCase(fetchUsersAndPosts.fulfilled, (state, action) => {
       const posts = action.payload.payload
-      const userPosts = Object.groupBy(posts, ({ userId }) => userId)
+      // Object?.groupBy(posts, ({ userId }) => userId)
+      const userPosts = groupBy(posts, ({ userId }) => userId)
       const newUsersData = current(state).data.map((user)=>({
         ...user,
         postsCount: userPosts[user.id]?.length || 0

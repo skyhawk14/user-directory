@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { groupBy } from "../../shared/utilities/pollyfill";
 import { API } from "../constants";
 
 const initialState = {
@@ -30,7 +31,8 @@ export const postsSlice = createSlice({
 export const selectAllPosts = (state) => state.posts
 
 export const selectPostById = (state, id) => {
-  const postsData = Object.groupBy(state.posts.data, ({ userId }) => userId )
+  // Object?.groupBy(state.posts.data, ({ userId }) => userId ) || 
+  const postsData = groupBy(state.posts.data, ({ userId }) => userId)
   return postsData[Number(id)] || []
 }
     
