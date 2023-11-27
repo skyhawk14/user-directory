@@ -14,3 +14,7 @@
   text-align: center;
   margin-top: 40px;
 }
+
+.profile-info{
+  overflow-wrap: anywhere;
+}

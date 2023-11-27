@@ -19,9 +19,8 @@ const UserProfile = ({user}) => {
         </div>
         <div className='profile-right-container'>
           <p>{address.suite}, {address.street}, {address.city}, {address.zipcode}</p>
-          <p>
-            <span>{email}</span>|
-            <span>{phone}</span>
+          <p className='profile-info'>
+            {email}|{phone}
           </p>
         </div>
       </div>
